@@ -16,7 +16,7 @@ namespace :import do
   end
 
   desc "calculate mean squared error"
-  task :mean_squared_error => :environment do
-    Recommender.new.mean_squared_error
+  task :calculate_mean_squared_error => :environment do
+    Recommender.new.calculate_mean_squared_error
   end
 end

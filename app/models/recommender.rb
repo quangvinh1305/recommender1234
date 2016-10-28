@@ -7,7 +7,9 @@ class Recommender
     @movie_items = Movielen.read_movies
     @n_items = @movie_items.count
     @ratings = Array.new(@n_users){Array.new(@n_items, 0)}
-    @ratings_test = Movielen.read_ratings "app/models/import/recommender_system/movie_data/u.test"
+    Movielen.read_ratings("app/models/import/recommender_system/movie_data/u.test").each do |r|
+      @ratings_test = [r[0] - 1][r[1] -1] = r[2]
+    end
     @user_after_ratings = nil
     Movielen.read_ratings.each do |r|
       @ratings[r[0] - 1][r[1] -1] = r[2]
@@ -234,7 +236,7 @@ class Recommender
     @average_ratings = top_5_genres
   end
 
-  def calculate mean_squared_error
+  def calculate_mean_squared_error
     y_true = []
     y_pred = []
     f = File.open('labels.json', 'r')
@@ -244,11 +246,12 @@ class Recommender
     f = File.open('avr_g.json', 'r')
     avr_g_clustered = JSON.parse(f.read)
     f.close
+    debugger
     (0..@n_users).each do |uindex|
-      (0..@n_items).each do |uitem|
-        if @ratings_test[i][j] > 0
-          y_true << @ratings_test[i][j]
-          y_pred << avr_g_clustered[i][labels[j]]
+      (0..@n_items).each do |iindex|
+        if @ratings_test[uindex][iindex] > 0
+          y_true << @ratings_test[uindex][iindex]
+          y_pred << avr_g_clustered[uindex][labels[iindex]]
         end
       end
     end

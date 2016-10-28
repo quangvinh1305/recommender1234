@@ -45,13 +45,6 @@ ActiveRecord::Schema.define(version: 20161005113643) do
     t.datetime "image_updated_at"
   end
 
-  create_table "movies_movie_genres", id: false, force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "movie_genre_id"
-    t.index ["movie_genre_id"], name: "index_movies_movie_genres_on_movie_genre_id"
-    t.index ["movie_id"], name: "index_movies_movie_genres_on_movie_id"
-  end
-
   create_table "occupations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false

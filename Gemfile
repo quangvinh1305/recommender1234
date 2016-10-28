@@ -12,9 +12,10 @@ gem 'devise'
 gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'searchkick'
-gem 'ai4r'
 gem 'faker'
+gem 'sqlite3'
 gem 'kmeans-clusterer'
+gem 'ai4r'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

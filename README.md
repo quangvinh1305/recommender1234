@@ -9,5 +9,6 @@ Results: User have the same references.
 1. Run rake import:import_all
 2. Run rake import:recommender_train
 3. Run rake import:recommender
+4. Run rake import:calculate_mean_squared_error
 
 Results: User have the same references.
